@@ -4,77 +4,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chiang Mai Private Driver</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <title>ChiangMai Ride</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        body {
-            font-family:'Poppins',sans-serif;
-            background: #f7f7f7
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
         }
 
-        .navbar {
-            background: rgba(0, 0, 0, .55) !important;
-            backdrop-filter: blur(8px)
+        body {
+            font-family: Poppins, sans-serif;
+            background: #f5f5f5
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 18px 8%;
+            background: rgba(0, 0, 0, .6);
+            color: #fff;
+            z-index: 99
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px
         }
 
         .hero {
+
+            position: relative;
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1800') center/cover;
+            overflow: hidden;
             display: flex;
+            justify-content: center;
             align-items: center;
-            color: #fff
+            color: white;
+            text-align: center;
+
+        }
+
+        .bg {
+
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 2.5s ease;
+
+        }
+
+        .bg.active {
+            opacity: 1;
+        }
+
+        .bg.active {
+
+            opacity: 1;
+
+        }
+
+        .bg::after {
+
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, .45);
+
+        }
+
+        .hero-content {
+
+            position: relative;
+            z-index: 10;
+
         }
 
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 700
+            font-size: 58px
         }
 
-        .btn-gold {
-            background: #d4af37;
-            color: #111;
-            border: none
+        .hero p {
+            margin: 20px
         }
 
-        .btn-gold:hover {
-            background: #b89227
+        form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            max-width: 1000px;
+            margin: auto;
+            background: rgba(255, 255, 255, .15);
+            padding: 20px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px)
+        }
+
+        input,
+        select,
+        button {
+            padding: 14px;
+            border: none;
+            border-radius: 8px
+        }
+
+        button {
+            background: #c8a24d;
+            color: #fff;
+            font-weight: bold
+        }
+
+        section {
+            padding: 80px 8%
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 35px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px
         }
 
         .card {
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
-            transition: .3s
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .08)
         }
 
-        .card:hover {
-            transform: translateY(-8px)
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover
         }
 
-        .section-title {
-            font-weight: 700;
-            margin-bottom: 40px
-        }
-
-        .form-control,
-        .form-select {
-            border-radius: 12px;
-            padding: 14px
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            border-color: #d4af37;
-            box-shadow: 0 0 0 .2rem rgba(212, 175, 55, .2)
-        }
-
-        footer {
-            background: #111;
-            color: #fff
+        .card .body {
+            padding: 18px
         }
 
         .float-btn {
@@ -103,113 +180,107 @@
         .wa {
             background: #25D366
         }
+
+        footer {
+            background: #111;
+            color: #fff;
+            text-align: center;
+            padding: 30px
+        }
     </style>
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#"><i class="fa-solid fa-car"></i> Chiang Mai Private Driver</a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span
-                    class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#fleet">Fleet</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#booking">Booking</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <header>
+        <div><strong>ChiangMai Ride</strong></div>
+        <nav>
+            <a href="#">Home</a><a href="#">Tours</a><a href="#">Fleet</a><a href="#">Contact</a>
+        </nav>
+    </header>
 
     <section class="hero">
-        <div class="container">
-            <h1>Private Driver<br>Chiang Mai - Thailand</h1>
-            <p class="lead">Airport Transfer • VIP Service • Tours • Long Distance</p>
-            <a href="#booking" class="btn btn-gold btn-lg px-4">Book Now</a>
+        <div class="bg bg1"></div>
+        <div class="bg bg2"></div>
+        <div class="hero-content">
+
+            <h1>Explore Chiang Mai with a Private Driver</h1>
+            <p>Airport transfers, city tours, mountain trips and luxury chauffeur service.</p>
+            <form>
+                <input placeholder="Pickup Location">
+                <input placeholder="Destination">
+                <input type="date">
+                <input type="time">
+                <select>
+                    <option>Vehicle Type</option>
+                    <option>Sedan</option>
+                    <option>SUV</option>
+                    <option>Van</option>
+                </select>
+                <button type="button">Search</button>
+            </form>
         </div>
     </section>
 
-    <section class="py-5">
-        <div class="container">
-            <h2 class="text-center section-title">Why Choose Us</h2>
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="card p-4 text-center"><i class="fa-solid fa-user-tie fa-3x text-warning"></i>
-                        <h5 class="mt-3">Professional Driver</h5>
-                    </div>
+    <section>
+        <h2>Popular Chiang Mai Destinations</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Phra_That_Doi_Suthep_01.jpg/500px-Phra_That_Doi_Suthep_01.jpg"
+                    alt="Doi Suthep">
+                <div class="body">
+                    <h3>Doi Suthep Temple</h3>
+                    <p>A major landmark of Chiang Mai, located on Doi Suthep mountain, offering panoramic views of the
+                        city.</p>
                 </div>
-                <div class="col-md-3">
-                    <div class="card p-4 text-center"><i class="fa-solid fa-shield fa-3x text-primary"></i>
-                        <h5 class="mt-3">Fully Insured</h5>
-                    </div>
+            </div>
+
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Doi_Inthanon%2C_View_of_the_mountains%2C_Thailand.jpg/500px-Doi_Inthanon%2C_View_of_the_mountains%2C_Thailand.jpg"
+                    alt="Doi Inthanon">
+                <div class="body">
+                    <h3>Doi Inthanon National Park</h3>
+                    <p>Thailand's highest point, waterfalls, nature trails, and sea of ​​mist.</p>
                 </div>
-                <div class="col-md-3">
-                    <div class="card p-4 text-center"><i class="fa-solid fa-clock fa-3x text-success"></i>
-                        <h5 class="mt-3">24/7 Service</h5>
-                    </div>
+            </div>
+
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Eastern_Gate_of_Chiang_Mai.jpg/500px-Eastern_Gate_of_Chiang_Mai.jpg"
+                    alt="Tha Phae">
+                <div class="body">
+                    <h3>Tha Phae Gate</h3>
+                    <p>The old town landmarks are perfect for strolling, taking photos, and visiting cafes.</p>
                 </div>
-                <div class="col-md-3">
-                    <div class="card p-4 text-center"><i class="fa-solid fa-language fa-3x text-danger"></i>
-                        <h5 class="mt-3">English Speaking</h5>
-                    </div>
+            </div>
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/The_elephant_herd_of_Elephant_Nature_Park.jpg/500px-The_elephant_herd_of_Elephant_Nature_Park.jpg"
+                    alt="Elephant Nature Park">
+                <div class="body">
+                    <h3>Elephant Nature Park</h3>
+                    <p>An elephant conservation center focused on ethical care and rehabilitation of elephants.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/The_Queen_Sirikit_Botanic_Garden_-_Chiang_Mai_2013_2651.jpg/500px-The_Queen_Sirikit_Botanic_Garden_-_Chiang_Mai_2013_2651.jpg"
+                    alt="Queen Sirikit Botanic Garden">
+                <div class="body">
+                    <h3>Queen Sirikit Botanic Garden</h3>
+                    <p>Walk among tropical plants, rainforest canopies and beautiful mountain gardens.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://s359.kapook.com/pagebuilder/440157a0-df99-4516-a283-529dd561a32a.jpg" alt="Mon Jam">
+                <div class="body">
+                    <h3>Mon Jam Mountain</h3>
+                    <p>Scenic views of mountains, flowers, and cool weather year-round.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-5" id="booking">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="card p-5">
-                        <h2 class="text-center mb-4">Book Your Private Driver</h2>
-                        <form>
-                            <div class="row g-4">
-                                <div class="col-md-6"><label class="form-label">Full Name</label><input
-                                        class="form-control"></div>
-                                <div class="col-md-6"><label class="form-label">Phone</label><input
-                                        class="form-control"></div>
-                                <div class="col-md-6"><label class="form-label">Email</label><input class="form-control"
-                                        type="email"></div>
-                                <div class="col-md-6"><label class="form-label">LINE ID</label><input
-                                        class="form-control"></div>
-                                <div class="col-md-6"><label class="form-label">Pickup Date</label><input
-                                        class="form-control" type="date"></div>
-                                <div class="col-md-6"><label class="form-label">Pickup Time</label><input
-                                        class="form-control" type="time"></div>
-                                <div class="col-md-6"><label class="form-label">Vehicle</label><select
-                                        class="form-select">
-                                        <option>Sedan</option>
-                                        <option>SUV</option>
-                                        <option>Luxury Van</option>
-                                    </select></div>
-                                <div class="col-md-6"><label class="form-label">Passengers</label><select
-                                        class="form-select">
-                                        <option>1-2</option>
-                                        <option>3-4</option>
-                                        <option>5+</option>
-                                    </select></div>
-                                <div class="col-md-6"><label class="form-label">Pickup Location</label><input
-                                        class="form-control"></div>
-                                <div class="col-md-6"><label class="form-label">Destination</label><input
-                                        class="form-control"></div>
-                                <div class="col-12"><label class="form-label">Special Request</label><textarea
-                                        class="form-control" rows="5"></textarea></div>
-                                <div class="col-12 d-grid"><button class="btn btn-gold btn-lg">Submit Booking</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact" class="py-4 text-center">
-        <h4>Luxury Driver Thailand</h4>
-        <p>☎ +66 80-000-0000 | LINE: @yourline | WhatsApp: +66 80-000-0000</p>
+    <footer>
+        © 2026 ChiangMai Ride • Private Chauffeur Service
     </footer>
 
     <div class="float-btn">
@@ -218,8 +289,91 @@
             <i class="fa-brands fa-whatsapp"></i>
         </a>
     </div>
+    <script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        const images = [
+            "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1800&q=80",
+            "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1800&q=80",
+            "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1800&q=80",
+            "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80",
+
+            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=80",
+            "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=1800&q=80",
+            "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1800&q=80",
+            "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1800&q=80",
+            "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1800&q=80",
+            "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=80",
+            "https://images.unsplash.com/photo-1443890923422-7819ed4101c0?auto=format&fit=crop&w=1800&q=80",
+            "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1800&q=80",
+            "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=80",
+            "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=1800&q=80",
+            "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1800&q=80"
+        ];
+
+        const bg1 = document.querySelector(".bg1");
+        const bg2 = document.querySelector(".bg2");
+
+        let current = 0;
+        let showingFirst = true;
+
+        // รูปแรก
+        bg1.style.backgroundImage = `url(${images[0]})`;
+        bg1.classList.add("active");
+        zoomEffect(bg1);
+
+        setInterval(() => {
+
+            current = (current + 1) % images.length;
+
+            if (showingFirst) {
+
+                bg2.style.backgroundImage = `url(${images[current]})`;
+
+                bg2.classList.add("active");
+                zoomEffect(bg2);
+                bg1.classList.remove("active");
+
+            } else {
+
+                bg1.style.backgroundImage = `url(${images[current]})`;
+
+                bg1.classList.add("active");
+                zoomEffect(bg1);
+                bg2.classList.remove("active");
+
+            }
+
+            showingFirst = !showingFirst;
+
+        }, 4000);
+
+        function zoomEffect(layer) {
+
+            layer.animate(
+
+                [
+                    {
+                        transform: "scale(1)"
+                    },
+
+                    {
+                        transform: "scale(1.08)"
+                    }
+                ],
+
+                {
+                    duration: 4000,
+                    easing: "linear",
+                    fill: "forwards"
+
+                }
+
+            );
+
+        }
+
+    </script>
+
 </body>
 
 </html>
