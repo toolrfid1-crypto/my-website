@@ -89,18 +89,18 @@
         }
 
         .hero h1 {
-            font-size:clamp(32px,6vw,58px);
+            font-size: clamp(32px, 6vw, 58px);
         }
 
         .hero p {
-            margin: 20px
+            margin: 26px
         }
 
         form {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 12px;
-            width:100%;
+            width: 100%;
             max-width: 1000px;
             margin: auto;
             background: rgba(255, 255, 255, .15);
@@ -134,7 +134,7 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px
         }
 
@@ -150,6 +150,16 @@
             height: 220px;
             object-fit: cover
         }
+
+        .vehicle-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            background: #fff;
+            padding: 15px;
+        }
+
+
 
         .card .body {
             padding: 18px
@@ -180,6 +190,10 @@
 
         .wa {
             background: #25D366
+        }
+
+        .wechat {
+            background: #07C160;
         }
 
         footer {
@@ -260,21 +274,32 @@
     <header>
         <div><strong>ChiangMai Ride</strong></div>
         <nav>
-            <a href="#">Home</a><a href="#">Tours</a><a href="#">Fleet</a><a href="#">Contact</a>
+            <a href="#home">Home</a><a href="#Popular">Popular</a><a href="#Vehicle">Vehicle</a>
         </nav>
     </header>
 
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="bg bg1"></div>
         <div class="bg bg2"></div>
-        <div class="hero-content">
 
+        <div class="hero-content">
             <h1>Explore Chiang Mai with a Private Driver</h1>
-            <p>Airport transfers, city tours, mountain trips and luxury chauffeur service.</p>
+
+            <p>
+                Your journey begins with comfort and peace of mind.
+                Discover Chiang Mai with trusted local drivers, comfortable vehicles, and personalized service tailored
+                to your travel needs.
+            </p>
+
+            <p style="margin-top:20px;font-weight:600;">
+                ✓ Airport Transfers &nbsp; • &nbsp;
+                ✓ Private Tours &nbsp; • &nbsp;
+                ✓ Professional Drivers &nbsp; • &nbsp;
+                ✓ 24/7 Service
+            </p>
         </div>
     </section>
-
-    <section>
+    <section id="Popular">
         <h2>Popular Chiang Mai Destinations</h2>
         <div class="grid">
             <div class="card">
@@ -331,16 +356,65 @@
             </div>
         </div>
     </section>
+    <section id="Vehicle">
+        <h2>Type Vehicles</h2>
+
+        <div class="grid">
+
+            <div class="card vehicle-card">
+                <img src="https://www.toyota.co.th/media/product/series/grades/v/camry/40/1e50d82078063f8dde451969e323a2fbc79bdc81bf217e74d036218204e71765.webp"
+                    alt="Sedan">
+                <div class="body">
+                    <h3>Sedan</h3>
+                    <p>Comfortable sedan suitable for airport transfers, city travel, and business trips.</p>
+
+                    <p><strong>Capacity:</strong> Up to 4 Passengers</p>
+                </div>
+            </div>
+
+            <div class="card vehicle-card">
+                <img src="https://cf.autodeft2.pw/uploads/images/2020/Press%20Event/Toyota/All-New%20Toyota%20Corolla%20CROSS%C2%A0/TMTNews-1.jpg"
+                    alt="SUV">
+                <div class="body">
+                    <h3>SUV</h3>
+                    <p>Spacious SUV with extra luggage space, perfect for families and mountain trips.</p>
+
+                    <p><strong>Capacity:</strong> Up to 5 Passengers</p>
+                </div>
+            </div>
+
+            <div class="card vehicle-card">
+                <img src="https://www.checkraka.com/uploaded/logo/5f/5f53b24b207bf8f0b5bbe5381750dd6e.webp" alt="Van">
+                <div class="body">
+                    <h3>Van</h3>
+                    <p>Ideal for large families, groups, and private tours around Chiang Mai.</p>
+
+                    <p><strong>Capacity:</strong> Up to 10 Passengers</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
 
     <footer>
         © 2026 ChiangMai Ride • Private Chauffeur Service
     </footer>
 
     <div class="float-btn">
-        <a href="#" class="line"><i class="fa-brands fa-line"></i></a>
-        <a href="https://wa.me/66954472323?text=สวัสดีครับ%20สนใจเช่ารถครับ" target="_blank" class="wa">
+
+        <a href="https://u.wechat.com/kPyB-MX3f5k6I1w9Zj1Cymk?s=2" target="_blank" class="wechat">
+            <i class="fa-brands fa-weixin"></i>
+        </a>
+
+        <a href="https://line.me/ti/p/Cqj8UJFUTU#~" target="_blank" class="line">
+            <i class="fa-brands fa-line"></i>
+        </a>
+
+        <a href="https://wa.me/qr/IK2TPQ2JCO3UF1" target="_blank" class="wa">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
+
     </div>
     <script>
 
